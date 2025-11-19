@@ -18,15 +18,15 @@ struct ContentView: View {
                 .tabItem {
                     // 3. Ustawiasz ikonę i etykietę dla zakładki
                     Image(systemName: "house.fill") // Ikona z biblioteki Apple (SF Symbols)
-                    Text("Główna")
+                    Text("Mapka")
                 }
 
             // 4. Definiujesz drugi ekran (zakładkę)
-            Text("Drugi ekran - Ustawienia")
+            TrainView()
                 .font(.largeTitle)
                 .tabItem {
-                    Image(systemName: "gearshape.fill")
-                    Text("Ustawienia")
+                    Image(systemName: "train.side.rear.car")
+                    Text("Pociagi")
                 }
             
             // Możesz dodać więcej widoków
