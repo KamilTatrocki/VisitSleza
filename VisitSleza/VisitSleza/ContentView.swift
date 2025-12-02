@@ -20,6 +20,11 @@ struct ContentView: View {
                     Image(systemName: "house.fill") // Ikona z biblioteki Apple (SF Symbols)
                     Text("Mapka")
                 }
+            BearView()
+                            .tabItem {
+                                Image(systemName: "pawprint.fill")
+                                Text("Miś")
+                            }
 
             // 4. Definiujesz drugi ekran (zakładkę)
             TrainView()
