@@ -8,45 +8,59 @@
 import SwiftUI
 
 struct ContentView: View {
+    // Track which tab is selected
+    @State private var selectedTab: Int = 0
+
     var body: some View {
-        // 1. Tworzysz główny kontener TabView
-        TabView {
-            
-            // 2. Definiujesz pierwszy ekran (zakładkę)
+        // Główny kontener TabView
+        TabView(selection: $selectedTab) {
+
+            // Start screen tab (tag 0)
+            StartView(selectedTab: $selectedTab)
+                .tabItem {
+                    Image(systemName: "sparkles")
+                    Text("Start")
+                }
+                .tag(0)
+
+            // Map tab (tag 1)
             MapView()
                 .font(.largeTitle)
                 .tabItem {
-                    // 3. Ustawiasz ikonę i etykietę dla zakładki
-                    Image(systemName: "house.fill") // Ikona z biblioteki Apple (SF Symbols)
+                    Image(systemName: "map.fill")
                     Text("Mapka")
                 }
-            BearView()
-                            .tabItem {
-                                Image(systemName: "pawprint.fill")
-                                Text("Miś")
-                            }
+                .tag(1)
 
-            // 4. Definiujesz drugi ekran (zakładkę)
+            // Bear tab (tag 2)
+            BearView()
+                .tabItem {
+                    Image(systemName: "pawprint.fill")
+                    Text("Miś")
+                }
+                .tag(2)
+
+            // Train tab (tag 3)
             TrainView()
                 .font(.largeTitle)
                 .tabItem {
                     Image(systemName: "train.side.rear.car")
                     Text("Pociagi")
                 }
-            
-            // Możesz dodać więcej widoków
+                .tag(3)
+
+            // Profile tab (tag 4)
             Text("Trzeci ekran - Profil")
                 .font(.largeTitle)
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Profil")
                 }
+                .tag(4)
         }
     }
 }
+
 #Preview {
     ContentView()
 }
-
-
-
