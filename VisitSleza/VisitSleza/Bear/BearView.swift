@@ -20,6 +20,7 @@ struct BearView: View {
                         .frame(width: 220, height: 220)
                     
                     Text("🧸")
+//                    Text("bear")
                         .font(.system(size: emojiSize))
                 }
                 .accessibilityElement(children: .ignore)
@@ -56,12 +57,12 @@ struct BearView: View {
                     Button(action: {
                     }) {
                         Text("Nagroda od Ślężysława")
-                            .font(.headline)
-                            .padding()
-                            .frame(maxWidth: .infinity, minHeight: 44)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(12)
+                                                    .font(.headline)
+                                                    .padding()
+                                                    .frame(maxWidth: .infinity, minHeight: 44)
+                                                    .background(Color.blue.brightness(-0.15))
+                                                    .foregroundColor(.white)
+                                                    .cornerRadius(12)
                     }
                     .padding(.horizontal, 40)
                     .transition(.scale.combined(with: .opacity))

@@ -1,35 +1,22 @@
-//
-//  TrainView.swift
-//  VisitSleza
-//
-//  Created by Kamil Tatrocki on 01/11/2025.
-//
-
 import SwiftUI
 
 struct TrainView: View {
     
-    // 1. Tworzy i obserwuje ViewModel
     @StateObject private var viewModel = TrainViewModel()
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                
-             
                 searchSection
-                
-          
                 resultsSection
             }
             .navigationTitle("Rozkład Jazdy")
             .background(Color(.systemGroupedBackground))
             .tint(.blue)
+            .accessibilityLabel("Ekran wyszukiwania połączeń. Użyj formularza u góry, aby znaleźć pociąg.")
         }
-        
         .dynamicTypeSize(.xSmall ... .accessibility5)
     }
-    
     
     private var searchSection: some View {
         Form {
@@ -38,74 +25,65 @@ struct TrainView: View {
                 selection: $viewModel.searchDate,
                 displayedComponents: [.date, .hourAndMinute]
             )
-      
+            .accessibilityLabel("Data odjazdu")
+            .accessibilityHint("Kliknij dwukrotnie, aby zmienić datę i godzinę.")
             
             Button(action: {
-   
                 Task {
                     await viewModel.fetchConnections()
                 }
             }) {
                 Text("Szukaj połączeń")
                     .frame(maxWidth: .infinity)
-                
-                    .font(.headline)
+                    .font(.headline.weight(.heavy))
+                    .foregroundStyle(.white)
             }
-            .buttonStyle(.borderedProminent)
+            .listRowBackground(Color.blue)
+            .buttonStyle(.plain)
+            .accessibilityHint("Rozpoczyna pobieranie listy pociągów.")
+            .accessibilityAddTraits(.isButton)
         }
         .frame(height: 160)
-      
         .dynamicTypeSize(.xSmall ... .accessibility5)
     }
     
-    // Prywatna właściwość dla sekcji wyników
     @ViewBuilder
     private var resultsSection: some View {
-
         switch viewModel.loadingState {
         case .idle:
-           
             ContentUnavailableView(
                 "Wyszukaj połączenia",
                 systemImage: "tram.fill",
                 description: Text("Wybierz datę i godzinę, aby zobaczyć pociągi.")
             )
             .dynamicTypeSize(.xSmall ... .accessibility5)
+            .accessibilityElement(children: .combine)
             
         case .loading:
-            
             Spacer()
             ProgressView("Ładowanie...")
                 .dynamicTypeSize(.xSmall ... .accessibility5)
             Spacer()
             
-        case .failed(let error):
+        case .failed:
             ContentUnavailableView(
                 "Brak wyników",
                 systemImage: "magnifyingglass",
                 description: Text("Nie znaleziono połączeń dla wybranej daty.")
             )
             .dynamicTypeSize(.xSmall ... .accessibility5)
-            
-            //ContentUnavailableView(
-              //  "Błąd",
-                //systemImage: "exclamationmark.triangle",
-                //description: Text(error.localizedDescription)
-            //)
-            //.dynamicTypeSize(.xSmall ... .accessibility5)
+            .accessibilityElement(children: .combine)
             
         case .success:
-            
             if viewModel.connections.isEmpty {
-               
                 ContentUnavailableView(
                     "Brak wyników",
                     systemImage: "magnifyingglass",
                     description: Text("Nie znaleziono połączeń dla wybranej daty.")
                 )
                 .dynamicTypeSize(.xSmall ... .accessibility5)
+                .accessibilityElement(children: .combine)
             } else {
-               
                 List(viewModel.connections) { connection in
                     ConnectionRowView(connection: connection)
                 }
@@ -116,7 +94,6 @@ struct TrainView: View {
     }
 }
 
-
 struct ConnectionRowView: View {
     let connection: TrainConnection
     
@@ -125,28 +102,29 @@ struct ConnectionRowView: View {
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(connection.departureTime)
-                    .font(.title3.weight(.bold))
+                    .font(.title3.weight(.heavy))
+                    .foregroundStyle(.primary)
                     .minimumScaleFactor(0.8)
                     .lineLimit(1)
+                
                 Text(connection.arrivalTime)
-                    .font(.body)
-                    .foregroundStyle(.secondary)
+                    .font(.body.weight(.medium))
+                    .foregroundStyle(.primary)
                     .lineLimit(1)
+                    .accessibilityHidden(true)
             }
+            .frame(minWidth: 70, alignment: .leading)
             
-
-            .frame(minWidth: 60, alignment: .leading)
-            
-
             VStack(alignment: .leading, spacing: 4) {
                 Text(connection.trainDescription)
-                    .font(.headline)
-                    .foregroundStyle(.blue)
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(.primary)
                     .lineLimit(2)
-                    .minimumScaleFactor(0.8)
+                    .minimumScaleFactor(0.9)
+                
                 Text(connection.durationFormatted)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(.primary)
                     .lineLimit(1)
             }
             
@@ -154,9 +132,13 @@ struct ConnectionRowView: View {
         }
         .padding(.vertical, 8)
         .dynamicTypeSize(.xSmall ... .accessibility5)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(
+            "Pociąg \(connection.trainDescription). Odjazd \(connection.departureTime), przyjazd \(connection.arrivalTime). Czas podróży \(connection.durationFormatted)."
+        )
+        .accessibilityAddTraits(.isStaticText)
     }
 }
-
 
 #Preview {
     TrainView()
