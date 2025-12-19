@@ -4,6 +4,8 @@ struct TrainView: View {
     
     @StateObject private var viewModel = TrainViewModel()
     
+    private let accessibleDarkBlue = Color(red: 0.0, green: 0.2, blue: 0.6)
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -12,7 +14,7 @@ struct TrainView: View {
             }
             .navigationTitle("Rozkład Jazdy")
             .background(Color(.systemGroupedBackground))
-            .tint(.blue)
+            .tint(accessibleDarkBlue)
             .accessibilityLabel("Ekran wyszukiwania połączeń. Użyj formularza u góry, aby znaleźć pociąg.")
         }
         .dynamicTypeSize(.xSmall ... .accessibility5)
@@ -38,7 +40,7 @@ struct TrainView: View {
                     .font(.headline.weight(.heavy))
                     .foregroundStyle(.white)
             }
-            .listRowBackground(Color.blue)
+            .listRowBackground(accessibleDarkBlue)
             .buttonStyle(.plain)
             .accessibilityHint("Rozpoczyna pobieranie listy pociągów.")
             .accessibilityAddTraits(.isButton)
