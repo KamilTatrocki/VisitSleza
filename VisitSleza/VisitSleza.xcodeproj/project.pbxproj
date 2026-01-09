@@ -6,11 +6,60 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8EA1475B2F11A6B6004B1252 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA1475A2F11A6B6004B1252 /* DeviceActivity.framework */; };
+		8EA147632F11A6B6004B1252 /* SlezaMonitorExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8EA147582F11A6B6004B1252 /* SlezaMonitorExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8EA147612F11A6B6004B1252 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EEB96842EB6B831005D5E38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8EA147572F11A6B6004B1252;
+			remoteInfo = SlezaMonitorExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8EA147642F11A6B6004B1252 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8EA147632F11A6B6004B1252 /* SlezaMonitorExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		8EA147582F11A6B6004B1252 /* SlezaMonitorExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SlezaMonitorExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EA1475A2F11A6B6004B1252 /* DeviceActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceActivity.framework; path = System/Library/Frameworks/DeviceActivity.framework; sourceTree = SDKROOT; };
 		8EEB968C2EB6B831005D5E38 /* VisitSleza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisitSleza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8EA147672F11A6B6004B1252 /* Exceptions for "SlezaMonitorExtension" folder in "SlezaMonitorExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8EA147572F11A6B6004B1252 /* SlezaMonitorExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		8EA1475C2F11A6B6004B1252 /* SlezaMonitorExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8EA147672F11A6B6004B1252 /* Exceptions for "SlezaMonitorExtension" folder in "SlezaMonitorExtension" target */,
+			);
+			path = SlezaMonitorExtension;
+			sourceTree = "<group>";
+		};
 		8EEB968E2EB6B831005D5E38 /* VisitSleza */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = VisitSleza;
@@ -19,6 +68,14 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8EA147552F11A6B6004B1252 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EA1475B2F11A6B6004B1252 /* DeviceActivity.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EEB96892EB6B831005D5E38 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,10 +86,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8EA147592F11A6B6004B1252 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8EA1475A2F11A6B6004B1252 /* DeviceActivity.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8EEB96832EB6B831005D5E38 = {
 			isa = PBXGroup;
 			children = (
 				8EEB968E2EB6B831005D5E38 /* VisitSleza */,
+				8EA1475C2F11A6B6004B1252 /* SlezaMonitorExtension */,
+				8EA147592F11A6B6004B1252 /* Frameworks */,
 				8EEB968D2EB6B831005D5E38 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				8EEB968C2EB6B831005D5E38 /* VisitSleza.app */,
+				8EA147582F11A6B6004B1252 /* SlezaMonitorExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +116,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8EA147572F11A6B6004B1252 /* SlezaMonitorExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8EA147682F11A6B6004B1252 /* Build configuration list for PBXNativeTarget "SlezaMonitorExtension" */;
+			buildPhases = (
+				8EA147542F11A6B6004B1252 /* Sources */,
+				8EA147552F11A6B6004B1252 /* Frameworks */,
+				8EA147562F11A6B6004B1252 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8EA1475C2F11A6B6004B1252 /* SlezaMonitorExtension */,
+			);
+			name = SlezaMonitorExtension;
+			packageProductDependencies = (
+			);
+			productName = SlezaMonitorExtension;
+			productReference = 8EA147582F11A6B6004B1252 /* SlezaMonitorExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		8EEB968B2EB6B831005D5E38 /* VisitSleza */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EEB96972EB6B833005D5E38 /* Build configuration list for PBXNativeTarget "VisitSleza" */;
@@ -55,10 +145,12 @@
 				8EEB96882EB6B831005D5E38 /* Sources */,
 				8EEB96892EB6B831005D5E38 /* Frameworks */,
 				8EEB968A2EB6B831005D5E38 /* Resources */,
+				8EA147642F11A6B6004B1252 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8EA147622F11A6B6004B1252 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				8EEB968E2EB6B831005D5E38 /* VisitSleza */,
@@ -80,6 +172,9 @@
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
+					8EA147572F11A6B6004B1252 = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
 					8EEB968B2EB6B831005D5E38 = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
@@ -100,11 +195,19 @@
 			projectRoot = "";
 			targets = (
 				8EEB968B2EB6B831005D5E38 /* VisitSleza */,
+				8EA147572F11A6B6004B1252 /* SlezaMonitorExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8EA147562F11A6B6004B1252 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EEB968A2EB6B831005D5E38 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +218,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8EA147542F11A6B6004B1252 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EEB96882EB6B831005D5E38 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +234,76 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8EA147622F11A6B6004B1252 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8EA147572F11A6B6004B1252 /* SlezaMonitorExtension */;
+			targetProxy = 8EA147612F11A6B6004B1252 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		8EA147652F11A6B6004B1252 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SlezaMonitorExtension/SlezaMonitorExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SlezaMonitorExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SlezaMonitorExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = PWR.VisitSleza.SlezaMonitorExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8EA147662F11A6B6004B1252 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SlezaMonitorExtension/SlezaMonitorExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SlezaMonitorExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SlezaMonitorExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = PWR.VisitSleza.SlezaMonitorExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		8EEB96952EB6B833005D5E38 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -244,6 +423,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VisitSleza/VisitSleza.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_APP_SANDBOX = YES;
@@ -286,6 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VisitSleza/VisitSleza.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_APP_SANDBOX = YES;
@@ -326,6 +507,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8EA147682F11A6B6004B1252 /* Build configuration list for PBXNativeTarget "SlezaMonitorExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EA147652F11A6B6004B1252 /* Debug */,
+				8EA147662F11A6B6004B1252 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8EEB96872EB6B831005D5E38 /* Build configuration list for PBXProject "VisitSleza" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

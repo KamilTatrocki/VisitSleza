@@ -57,6 +57,13 @@ struct ContentView: View {
                     Text("Profil")
                 }
                 .tag(4)
+            
+            MonitorView()
+                .tabItem {
+                    Image(systemName: "clock.badge.exclamationmark")
+                    Text("Limit")
+                }
+                .tag(5)
         }
     }
 }
