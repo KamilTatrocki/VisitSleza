@@ -1,12 +1,9 @@
-
 import SwiftUI
-import Foundation
-import DeviceActivity
 import FamilyControls
-import Combine
 
 struct MonitorView: View {
     @StateObject private var manager = DeviceMonitorManager()
+    @State private var isPickerPresented = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -17,17 +14,24 @@ struct MonitorView: View {
             Text(manager.isMonitoring ? "Monitoring aktywny" : "Monitoring wyłączony")
                 .font(.headline)
 
+            Button("Wybierz aplikacje do limitu") {
+                isPickerPresented = true
+            }
+            .familyActivityPicker(isPresented: $isPickerPresented, selection: $manager.selection)
+            .padding()
+
             Button(action: {
                 Task {
                     await manager.requestAuthorization()
                     manager.startMonitoring()
                 }
             }) {
-                Text("Włącz limit zwiedzania")
+                Text("Włącz limit 10s")
                     .padding()
+                    .frame(maxWidth: .infinity)
                     .background(Color.blue)
                     .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .cornerRadius(12)
             }
 
             Button(action: {
