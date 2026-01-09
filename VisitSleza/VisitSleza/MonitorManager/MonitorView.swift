@@ -7,18 +7,20 @@ struct MonitorView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Image(systemName: manager.isMonitoring ? "timer" : "timer.slash")
+            // Zmieniono timer.slash na clock, który jest dostępny wszędzie
+            Image(systemName: manager.isMonitoring ? "timer" : "clock")
                 .font(.system(size: 60))
-                .foregroundColor(manager.isMonitoring ? .green : .red)
+                .foregroundColor(manager.isMonitoring ? .green : .orange)
 
-            Text(manager.isMonitoring ? "Monitoring aktywny" : "Monitoring wyłączony")
+            Text(manager.isMonitoring ? "Monitoring aktywny" : "Wybierz aplikacje i włącz")
                 .font(.headline)
 
-            Button("Wybierz aplikacje do limitu") {
+            // WAŻNE: Musisz tu kliknąć i wybrać "VisitSleza" na liście!
+            Button("1. Wybierz aplikacje (WYMAGANE)") {
                 isPickerPresented = true
             }
             .familyActivityPicker(isPresented: $isPickerPresented, selection: $manager.selection)
-            .padding()
+            .buttonStyle(.bordered)
 
             Button(action: {
                 Task {
@@ -26,7 +28,7 @@ struct MonitorView: View {
                     manager.startMonitoring()
                 }
             }) {
-                Text("Włącz limit 10s")
+                Text("2. Włącz limit 10s")
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color.blue)
@@ -34,10 +36,22 @@ struct MonitorView: View {
                     .cornerRadius(12)
             }
 
+            // TRYB TESTOWY DLA SYMULATORA
+            Button(action: {
+                manager.simulateNotification()
+            }) {
+                Text("Testuj powiadomienie (Symulator)")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.gray.opacity(0.2))
+                    .foregroundColor(.black)
+                    .cornerRadius(12)
+            }
+
             Button(action: {
                 manager.stopMonitoring()
             }) {
-                Text("Wyłącz limit")
+                Text("Wyłącz wszystko")
                     .foregroundColor(.red)
             }
         }

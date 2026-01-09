@@ -10,7 +10,7 @@ class SlezaMonitorExtension: DeviceActivityMonitor {
 
     override func eventDidReachThreshold(_ event: DeviceActivityEvent.Name, activity: DeviceActivityName) {
         super.eventDidReachThreshold(event, activity: activity)
-        sendNotification(body: "Przekroczono 10 sekund aktywności!")
+        sendNotification(body: "Przekroczono limit aktywności!")
     }
 
     private func sendNotification(body: String) {
@@ -22,9 +22,15 @@ class SlezaMonitorExtension: DeviceActivityMonitor {
         let request = UNNotificationRequest(
             identifier: UUID().uuidString,
             content: content,
-            trigger: nil
+            trigger: nil // deliver immediately
         )
 
-        UNUserNotificationCenter.current().add(request)
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                NSLog("SlezaMonitorExtension: Failed to add notification: \(error)")
+            } else {
+                NSLog("SlezaMonitorExtension: Notification scheduled.")
+            }
+        }
     }
 }
